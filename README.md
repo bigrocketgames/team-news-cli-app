@@ -1,1 +1,0 @@
-# team-news-cli-app
