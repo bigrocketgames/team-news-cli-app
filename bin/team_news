@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
 
-puts "Hello world"
+require './lib/team_news'
+
+TeamNews::CLI.new.call
