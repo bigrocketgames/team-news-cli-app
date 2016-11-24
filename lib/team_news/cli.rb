@@ -40,7 +40,8 @@ class TeamNews::CLI
     if choice == "0"
       call
     else
-      
+      # test that scraper is working by pushing the website from the NFL team array to TeamNews::Scraper.nfl_team_scrape()
+
     end
 
   end
