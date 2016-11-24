@@ -2,7 +2,7 @@ class TeamNews::Story
   attr_accessor :headline, :publisher, :date, :summary, :link, :subscription, :author
   @@all = []
 
-  def initialize(headline, publisher, date, summary, link, author, subscription)
+  def initialize(headline = nil, publisher = nil, date = nil, summary = nil, link = nil, author = nil, subscription = nil)
     @headline = headline
     @publisher = publisher
     @date = date
@@ -12,13 +12,19 @@ class TeamNews::Story
     @subscription = subscription
   end
 
-  def self.story_list(url)
+  def self.story_scrape(url)
     doc = TeamNews::Scraper.new.team_scrape(url)
-    slide_count = TeamNews::Scraper.new.number_of_slides(doc)
+    TeamNews::Scraper.new.scrape_for_stories(doc)
   end
 
   def self.all
     @@all
+  end
+
+  def self.story_list
+    self.all.each do |story|
+
+    end
   end
 
 end

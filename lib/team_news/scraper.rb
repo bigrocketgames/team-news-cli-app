@@ -1,4 +1,5 @@
 class TeamNews::Scraper
+  attr_accessor :story
 
   # gets the HTML from the requested URL
   def team_scrape(team_url)
@@ -11,9 +12,19 @@ class TeamNews::Scraper
     doc.css("div.ep-nav ul li").each do |i|
       count += 1
     end
-    puts count
+    return count
   end
 
+  def scrape_for_stories(doc)
+    slide_count = number_of_slides(doc)
+    count = 0
+    while count < slide_count
+      puts doc.search("li[data-index='#{count.to_s}'] a div.content h3[itemprop='headline'] span:last-child").text.strip
+      binding.pry
+      count += 1
+    end
+
+  end
 
 
 end

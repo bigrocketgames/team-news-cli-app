@@ -43,7 +43,7 @@ class TeamNews::CLI
       call
     else
       # test that scraper is working by pushing the website from the NFL team array to TeamNews::Scraper.nfl_team_scrape()
-      html = TeamNews::Story.new.class.story_list(NFL_TEAMS[choice.to_i-1][1])
+      html = TeamNews::Story.new.class.story_scrape(NFL_TEAMS[choice.to_i-1][1])
 
     end
 
