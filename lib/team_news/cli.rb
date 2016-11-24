@@ -19,7 +19,7 @@ class TeamNews::CLI
       count += 1
     end
 
-    choice = gets.strip
+    choice = gets.strip.downcase
 
     if choice == "1"
       list_nfl_teams
@@ -37,14 +37,14 @@ class TeamNews::CLI
       count += 1
     end
 
-    choice = gets.strip
+    choice = gets.strip.downcase
 
     if choice == "0"
       call
     else
       # test that scraper is working by pushing the website from the NFL team array to TeamNews::Scraper.nfl_team_scrape()
-      html = TeamNews::Scraper.new.nfl_team_scrape(NFL_TEAMS[choice.to_i-1][1])
-      binding.pry
+      html = TeamNews::Story.new.class.story_list(NFL_TEAMS[choice.to_i-1][1])
+
     end
 
   end
