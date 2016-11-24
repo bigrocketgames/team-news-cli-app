@@ -1,3 +1,5 @@
+require 'pry'
+
 class TeamNews::CLI
   SPORTS = ["NFL", "NCAA"]
   NFL_TEAMS = [["Arizona Cardinals", "https://www.scout.com/nfl/cardinals"], ["Atlanta Falcons", "https://www.scout.com/nfl/falcons"], "Baltimore Ravens", "Buffalo Bills", "Caronlina Panthers", "Chicago Bears", "Cincinnati Bengals", "Cleveland Browns", "Dallas Cowboys", "Denver Broncos", "Detroit Lions", "Green Bay Packers", "Houston Texans", "Indianapolis Colts", "Jacksonville Jaguars", "Kansas City Chiefs", "Los Angeles Rams", "Miami Dolphins", "Minnesota Vikings", "New England Patriots", "New Orleans Saints", "New York Giants", "New York Jets", "Oakland Raiders", "Philadelphia Eagles", "Pittsburgh Steelers", "Sand Diego Chargers", "San Francisco 49ers", "Seattle Seahawks", "Tampa Bay Buccaneers", "Tennessee Titans", "Washington Redskins"]
@@ -41,7 +43,8 @@ class TeamNews::CLI
       call
     else
       # test that scraper is working by pushing the website from the NFL team array to TeamNews::Scraper.nfl_team_scrape()
-
+      html = TeamNews::Scraper.new.nfl_team_scrape(NFL_TEAMS[choice.to_i-1][1])
+      binding.pry
     end
 
   end
