@@ -10,6 +10,8 @@ class TeamNews::Story
     @link = link
     @author = author
     @subscription = subscription
+
+    @@all << self
   end
 
   def self.story_scrape(url)
