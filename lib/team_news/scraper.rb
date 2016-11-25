@@ -26,17 +26,17 @@ class TeamNews::Scraper
     doc.css("div.home-wrap div.homestream div.base-note").each do |i|
       if count < 5
         puts count
-        test = i.css("a:first-child")
-        if test == ""
+        test = i.at_css("a:first-child").attribute("href").value
+        if test.class == NilClass
           puts "This is an ad"
         else
-          puts test['href']
+          puts test
         end
         # headline = i.css("div.story-info h4.title span.title-text span").text.strip
         # publisher = i.css("div.story-info div.under-title div.site-name").text.strip
         # date = i.css("div.story-info div.under-title span.date").text.strip
         # summary = i.css("div.story-info span.story-deck>span:first-child").text.strip
-        # link
+        # link = i.at_css("a:first-child").attribute("href").value
         # author = i.css("div.story-info span.story-deck span.author>span:nth-child(3)").text.strip
         # subscription = i.css("div.story-info span.story-deck div.icon_key").to_s.match(/icon_key/).to_s == "icon_key" ? "True" : "False"
       end
