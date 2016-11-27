@@ -15,7 +15,7 @@ class TeamNews::Story
       @subscription = subscription
       @@all << self
     end
-    
+
   end
 
   def self.story_scrape(url)
