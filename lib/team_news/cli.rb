@@ -53,13 +53,13 @@ class TeamNews::CLI
     else
       # test that scraper is working by pushing the website from the NFL team array to TeamNews::Scraper.nfl_team_scrape()
       puts " "
-      html = TeamNews::Story.new.class.story_scrape(NFL_TEAMS[choice.to_i-1][1])
+      html = TeamNews::Story.story_scrape(NFL_TEAMS[choice.to_i-1][1])
       list_nfl_team_stories
     end
   end
 
   def list_nfl_team_stories
-    TeamNews::Story.new.class.story_list
+    TeamNews::Story.story_list
     puts " "
     puts "Please enter the number of the story you would like to read."
     puts "Enter 0 to return to the list of NFL teams or 'exit' to end your session."
@@ -72,7 +72,7 @@ class TeamNews::CLI
     elsif choice == "exit"
       puts "Goodbye"
     elsif choice.to_i.between?(1,20)
-
+      TeamNews::Story.read_story(choice.to_i-1)
     else
       puts "Please enter a valid response(0-20, 'exit')."
     end

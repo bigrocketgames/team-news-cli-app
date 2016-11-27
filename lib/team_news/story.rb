@@ -35,4 +35,8 @@ class TeamNews::Story
     end
   end
 
+  def self.read_story(story_number)
+    puts self.all[story_number].headline
+  end
+
 end
