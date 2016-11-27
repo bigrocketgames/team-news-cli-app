@@ -23,6 +23,7 @@ class TeamNews::CLI
 
     choice = gets.strip.downcase
 
+    # turn this to a loop to make sure only proper answers are entered
     if choice == "1"
       puts " "
       list_nfl_teams
@@ -45,14 +46,15 @@ class TeamNews::CLI
 
     choice = gets.strip.downcase
 
+    # turn this to a loop to make sure only proper answers are entered
     if choice == "0"
       puts " "
       call
     elsif choice == "exit"
       puts "Goodbye"
     else
-      # test that scraper is working by pushing the website from the NFL team array to TeamNews::Scraper.nfl_team_scrape()
       puts " "
+      TeamNews::Story.reset
       html = TeamNews::Story.story_scrape(NFL_TEAMS[choice.to_i-1][1])
       list_nfl_team_stories
     end
@@ -66,6 +68,7 @@ class TeamNews::CLI
 
     choice = gets.strip.downcase
 
+    # turn this to a loop to make sure only proper answers are entered
     if choice == "0"
       puts " "
       list_nfl_teams
@@ -74,6 +77,10 @@ class TeamNews::CLI
     elsif choice.to_i.between?(1,20)
       puts " "
       TeamNews::Story.read_story(choice.to_i-1)
+      puts " "
+      choice_2 = gets.strip.downcase
+      # add a loop to ask to list stories, return to previous menu, or exit.
+
     else
       puts "Please enter a valid response(0-20, 'exit')."
     end

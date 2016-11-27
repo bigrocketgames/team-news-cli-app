@@ -27,6 +27,10 @@ class TeamNews::Story
     @@all
   end
 
+  def self.reset
+    @@all.clear
+  end
+
   def self.story_list
     count = 1
     self.all.each do |story|
