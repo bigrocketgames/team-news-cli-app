@@ -35,6 +35,7 @@ class TeamNews::Story
     count = 1
     self.all.each do |story|
       puts "#{count}. #{story.headline} - #{story.subscription}"
+      puts "    Published by: #{story.publisher} - Date Published: #{story.date} - Written By: #{story.author}"
       count += 1
     end
   end
