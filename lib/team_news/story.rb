@@ -3,15 +3,19 @@ class TeamNews::Story
   @@all = []
 
   def initialize(headline = nil, publisher = nil, date = nil, summary = nil, link = nil, author = nil, subscription = nil)
-    @headline = headline
-    @publisher = publisher
-    @date = date
-    @summary = summary
-    @link = link
-    @author = author
-    @subscription = subscription
 
-    @@all << self
+    if headline == nil
+    else
+      @headline = headline
+      @publisher = publisher
+      @date = date
+      @summary = summary
+      @link = link
+      @author = author
+      @subscription = subscription
+      @@all << self
+    end
+    
   end
 
   def self.story_scrape(url)

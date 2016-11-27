@@ -17,31 +17,41 @@ class TeamNews::Scraper
   def scrape_for_stories(doc)
     slide_count = number_of_slides(doc)
     count = 0
-    # while count < slide_count
-    #   puts doc.search("li[data-index='#{count.to_s}'] a div.content h3[itemprop='headline'] span:last-child").text.strip
-    #   binding.pry
-    #   count += 1
-    # end
+    if slide_count != 0
+      doc.css("ul.slider li").each do |i|
+        puts
 
-    doc.css("div.home-wrap div.homestream div.base-note").each do |i|
-      if count < 5
-        puts count
-        test = i.at_css("a:first-child").attribute("href").value
-        if test.class == NilClass
-          puts "This is an ad"
-        else
-          puts test
-        end
-        # headline = i.css("div.story-info h4.title span.title-text span").text.strip
-        # publisher = i.css("div.story-info div.under-title div.site-name").text.strip
-        # date = i.css("div.story-info div.under-title span.date").text.strip
-        # summary = i.css("div.story-info span.story-deck>span:first-child").text.strip
-        # link = i.at_css("a:first-child").attribute("href").value
-        # author = i.css("div.story-info span.story-deck span.author>span:nth-child(3)").text.strip
-        # subscription = i.css("div.story-info span.story-deck div.icon_key").to_s.match(/icon_key/).to_s == "icon_key" ? "True" : "False"
+        headline = i.css("div.content h3 span:nth-child(2)").text.strip
       end
+      # binding.pry
       count += 1
     end
+
+    # doc.css("div.home-wrap div.base-note").each do |i|
+    #   if count < 3
+    #     puts count
+    #
+    #     # for the
+    #     ad_detect = i.css("div.story-info div.under-title div.site-name").text.strip
+    #     if ad_detect == ""
+    #       puts "This is an ad"
+    #     else
+    #         headline = i.css("div.story-info h4.title span.title-text span").text.strip
+    #         publisher = i.css("div.story-info div.under-title div.site-name").text.strip
+    #         date = i.css("div.story-info div.under-title span.date").text.strip
+    #         summary = i.css("div.story-info span.story-deck>span:first-child").text.strip
+    #         link = i.at_css("a:first-child").attribute("href").value
+    #         author = i.css("div.story-info span.story-deck span.author>span:nth-child(3)").text.strip
+    #         subscription = i.css("div.story-info span.story-deck div.icon_key").to_s.match(/icon_key/).to_s == "icon_key" ? "True" : "False"
+    #
+    #         story = TeamNews::Story.new(headline, publisher, date, summary, link, author, subscription)
+    #
+    #         count += 1
+    #     end
+    #   end
+    #
+    #
+    # end
 
   end
 
