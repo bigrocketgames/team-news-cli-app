@@ -1,6 +1,7 @@
 require 'pry'
 
 class TeamNews::CLI
+  attr_accessor :ncaa_conference_choice
   SPORTS = ["NFL", "NCAA"]
   NFL_TEAMS = [["Arizona Cardinals", "https://www.scout.com/nfl/cardinals"], ["Atlanta Falcons", "https://www.scout.com/nfl/falcons"], ["Baltimore Ravens", "https://www.scout.com/nfl/ravens"], ["Buffalo Bills", "https://www.scout.com/nfl/bills"], ["Caronlina Panthers", "https://www.scout.com/nfl/panthers"], ["Chicago Bears", "https://www.scout.com/nfl/bears"], ["Cincinnati Bengals", "https://www.scout.com/nfl/bengals"], ["Cleveland Browns", "https://www.scout.com/nfl/browns"], ["Dallas Cowboys", "https://www.scout.com/nfl/cowboys"], ["Denver Broncos", "https://www.scout.com/nfl/broncos"], ["Detroit Lions", "https://www.scout.com/nfl/lions"], ["Green Bay Packers", "https://www.scout.com/nfl/packers"], ["Houston Texans", "https://www.scout.com/nfl/texans"], ["Indianapolis Colts", "https://www.scout.com/nfl/colts"], ["Jacksonville Jaguars", "https://www.scout.com/nfl/jaguars"], ["Kansas City Chiefs", "https://www.scout.com/nfl/chiefs"], ["Los Angeles Rams", "https://www.scout.com/nfl/rams"], ["Miami Dolphins", "https://www.scout.com/nfl/dolphins"], ["Minnesota Vikings", "https://www.scout.com/nfl/vikings"], ["New England Patriots", "https://www.scout.com/nfl/patriots"], ["New Orleans Saints", "https://www.scout.com/nfl/saints"], ["New York Giants", "https://www.scout.com/nfl/giants"], ["New York Jets", "https://www.scout.com/nfl/jets"], ["Oakland Raiders", "https://www.scout.com/nfl/raiders"], ["Philadelphia Eagles", "https://www.scout.com/nfl/eagles"], ["Pittsburgh Steelers", "https://www.scout.com/nfl/steelers"], ["Sand Diego Chargers", "https://www.scout.com/nfl/chargers"], ["San Francisco 49ers", "https://www.scout.com/nfl/49ers"], ["Seattle Seahawks", "https://www.scout.com/nfl/seahawks"], ["Tampa Bay Buccaneers", "https://www.scout.com/nfl/buccaneers"], ["Tennessee Titans", "https://www.scout.com/nfl/titans"], ["Washington Redskins", "https://www.scout.com/nfl/redskins"]]
   NCAA_CONFERENCES = ["SEC", "ACC", "BIG 10", "BIG 12", "AMERICAN", "PAC 12", "CONFERENCE USA", "MOUNTAIN WEST", "MAC", "SUN BELT", "INDEPENDENTS"]
@@ -12,8 +13,8 @@ class TeamNews::CLI
   PAC_12_TEAMS = [["Arizona State Sun Devils", "https://www.scout.com/college/arizona-state"], ["Arizona Wildcats", "https://www.scout.com/college/arizona"], ["California Golden Bears", "https://www.scout.com/college/california"], ["Colorado Buffaloes", "https://www.scout.com/college/colorado"], ["Oregon Ducks", "https://www.scout.com/college/oregon"], ["Oregon State Beavers", "https://www.scout.com/college/oregon-state"], ["Stanford Cardinal", "https://www.scout.com/college/stanford"], ["UCLA Bruins", "https://www.scout.com/college/ucla"], ["USC Trojans", "https://www.scout.com/college/usc"], ["Utah Utes", "https://www.scout.com/college/utah"], ["Washington Huskies", "https://www.scout.com/college/washington"], ["Washington State Cougars", "https://www.scout.com/college/washington-state"]]
   CUSA_TEAMS = [["Charlotte 49ers", "https://www.scout.com/college/charlotte"], ["Florida Atlantic Owls", "https://www.scout.com/college/florida-atlantic"], ["Florida International Golden Panthers", "https://www.scout.com/college/florida-international"], ["Louisiana Tech Bulldogs", "https://www.scout.com/college/louisiana-tech"], ["Marshall Thundering Herd", "https://www.scout.com/college/marshall"], ["Middle Tennessee State Blue Raiders", "https://www.scout.com/college/middle-tennessee-state"], ["North Texas Eagles", "https://www.scout.com/college/north-texas"], ["Old Dominion Monarchs", "https://www.scout.com/college/old-dominion"], ["Rice Owls", "https://www.scout.com/college/rice"], ["Southern Mississippi", "https://www.scout.com/college/southern-mississippi"], ["Texas-San Antonio Roadrunners", "https://www.scout.com/college/texas-san-antonio"], ["UAB Blazers", "https://www.scout.com/college/alabama-birmingham"], ["UTEP Miners", "https://www.scout.com/college/utep"], ["Western Kentucky Hilltoppers", "https://www.scout.com/college/western-kentucky"]]
   MWC_TEAMS = [["Air Force Falcons", "https://www.scout.com/college/air-force"], ["Boise State Broncos", "https://www.scout.com/college/boise-state"], ["Colorado State Rams", "https://www.scout.com/college/colorado-state"], ["Fresno State Bulldogs", "https://www.scout.com/college/fresno-state"], ["Hawaii Warriors", "https://www.scout.com/college/hawaii"], ["Nevada Wolf Pack", "https://www.scout.com/college/nevada"], ["New Mexico Lobos", "https://www.scout.com/college/new-mexico"], ["San Diego State Aztecs", "https://www.scout.com/college/san-diego-state"], ["San Jose State Spartans", "https://www.scout.com/college/san-jose-state"], ["UNLV Rebels", "https://www.scout.com/college/unlv"], ["Utah State Aggies", "https://www.scout.com/college/utah-state"], ["Wyoming Cowboys", "https://www.scout.com/college/wyoming"]]
-  MAC_TEAMS = []
-  SUN_BELT_TEAMS = []
+  MAC_TEAMS = [["Akron Zips", "https://www.scout.com/college/akron"], ["Ball State Cardinals", "https://www.scout.com/college/ball-state"], ["Bowling Green Falcons", "https://www.scout.com/college/bowling-green"], ["Buffalo Bulls", "https://www.scout.com/college/buffalo"], ["Central Michigan Chippewas", "https://www.scout.com/college/central-michigan"], ["Eastern Michigan Eagles", "https://www.scout.com/college/eastern-michigan"], ["Kent State Golden Flashes", "https://www.scout.com/college/kent-state"], ["Massachusetts Minutement", "https://www.scout.com/college/massachusetts"], ["Miami (OH) RedHawks", "https://www.scout.com/college/miamiohio"], ["Northern Illinois Huskies", "https://www.scout.com/college/northern-illinois"], ["Ohio Bobcats", "https://www.scout.com/college/ohio"], ["Toledo Rockets", "https://www.scout.com/college/toledo"], ["Western Michigan Broncos", "https://www.scout.com/college/western-michigan"]]
+  SUN_BELT_TEAMS = [["Appalachian State Mountaineers", "https://www.scout.com/college/appalachian-state"], ["Arkansas State Red Wolves", "https://www.scout.com/college/arkansas-state"], ["Georgia Southern Eagles", "https://www.scout.com/college/georgia-southern"], ["Georgia State Panthers", "https://www.scout.com/college/georgia-state"], ["Idaho Vandals", "https://www.scout.com/college/idaho"], ["Louisiana-Lafayette Ragin Cajuns", "https://www.scout.com/college/louisiana"], ["Louisiana-Monroe Indians", "https://www.scout.com/college/louisiana-monroe"], ["New Mexico State Aggies", "https://www.scout.com/college/new-mexico-state"], ["South Alabama Jaguars", "https://www.scout.com/college/south-alabama"], ["Texas State Bobcats", "https://www.scout.com/college/texas-state"], ["Troy Trojans", "https://www.scout.com/college/troy"]]
   INDEPENDENT_TEAMS = [["Army West Point Black Knights", "https://www.scout.com/college/army"], ["BYU Cougars", "https://www.scout.com/college/byu"], ["Notre Dame Fighting Irish", "https://www.scout.com/college/notre-dame"]]
 
   def call
@@ -57,7 +58,7 @@ class TeamNews::CLI
     end
     choice = nil
 
-    while choice != "0" && choice != "exit" && !choice.to_i.between?(1,32)
+    while choice != "0" && choice != "exit" && !choice.to_i.between?(1,NFL_TEAMS.count)
       puts " "
       puts "Please enter the number of the team you would like to see headlines for."
       puts "Enter 0 to go back to the main menu or 'exit' to end your session."
@@ -67,7 +68,7 @@ class TeamNews::CLI
         call
       elsif choice == "exit"
         puts "Goodbye"
-      elsif choice.to_i.between?(1,32)
+      elsif choice.to_i.between?(1,NFL_TEAMS.count)
         puts " "
         TeamNews::Story.reset
         while TeamNews::Story.all.count < 20
@@ -81,7 +82,6 @@ class TeamNews::CLI
 
   def list_nfl_team_stories
     TeamNews::Story.story_list
-
     choice = nil
 
     # turn this to a loop to make sure only proper answers are entered
@@ -137,7 +137,7 @@ class TeamNews::CLI
         call
       elsif choice == "exit"
         puts "Goodbye"
-      elsif choice.to_i.between?(1,11)
+      elsif choice.to_i.between?(1,NCAA_CONFERENCES.count)
         puts " "
         case choice.to_i
         when 1
@@ -168,10 +168,73 @@ class TeamNews::CLI
   end
 
   def list_ncaa_teams(conference)
+    @ncaa_conference_choice = conference
     count = 1
     conference.each do |t|
       puts "#{count}. #{t[0]}"
       count += 1
+    end
+
+    choice = nil
+
+    while choice != "0" && choice != "exit" && !choice.to_i.between?(1,conference.count)
+      puts " "
+      puts "Please enter the number of the team you would like to see headlines for."
+      puts "Enter 0 to go back to the conference menu or 'exit' to end your session."
+      choice = gets.strip.downcase
+      if choice == "0"
+        puts " "
+        list_ncaa_conferences
+      elsif choice == "exit"
+        puts "Goodbye"
+      elsif choice.to_i.between?(1,conference.count)
+        puts " "
+        TeamNews::Story.reset
+        while TeamNews::Story.all.count < 20
+          TeamNews::Story.reset
+          TeamNews::Story.story_scrape(conference[choice.to_i-1][1])
+        end
+          list_ncaa_team_stories
+      end
+    end
+  end
+
+  def list_ncaa_team_stories
+    TeamNews::Story.story_list
+    choice = nil
+
+    # turn this to a loop to make sure only proper answers are entered
+    while choice != "0" && choice != "exit" && !choice.to_i.between?(1,20)
+      puts " "
+      puts "Please enter the number of the story you would like to read."
+      puts "Enter 0 to return to the list of teams or 'exit' to end your session."
+      choice = gets.strip.downcase
+      if choice == "0"
+        puts " "
+        list_ncaa_teams(@ncaa_conference_choice)
+      elsif choice == "exit"
+        puts "Goodbye"
+      elsif choice.to_i.between?(1,20)
+        puts " "
+        TeamNews::Story.read_story(choice.to_i-1)
+        choice_2 = nil
+        # add a loop to ask to list stories, return to previous menu, or exit.
+        while choice_2 != "exit" && choice_2 != "list" && choice_2 != "0"
+          puts " "
+          puts "Please enter 'list' to see the list of articles again."
+          puts "Enter 0 to return to the list of teams or 'exit' to end your session."
+          choice_2 = gets.strip.downcase
+          if choice_2 == "0"
+            puts " "
+            list_ncaa_teams(@ncaa_conference_choice)
+          elsif choice_2 == "list"
+            puts " "
+            list_ncaa_team_stories
+          elsif choice_2 == "exit"
+            puts "Goodbye"
+          end
+        end
+      end
     end
   end
 
