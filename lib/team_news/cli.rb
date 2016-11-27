@@ -5,7 +5,16 @@ class TeamNews::CLI
   NFL_TEAMS = [["Arizona Cardinals", "https://www.scout.com/nfl/cardinals"], ["Atlanta Falcons", "https://www.scout.com/nfl/falcons"], ["Baltimore Ravens", "https://www.scout.com/nfl/ravens"], ["Buffalo Bills", "https://www.scout.com/nfl/bills"], ["Caronlina Panthers", "https://www.scout.com/nfl/panthers"], ["Chicago Bears", "https://www.scout.com/nfl/bears"], ["Cincinnati Bengals", "https://www.scout.com/nfl/bengals"], ["Cleveland Browns", "https://www.scout.com/nfl/browns"], ["Dallas Cowboys", "https://www.scout.com/nfl/cowboys"], ["Denver Broncos", "https://www.scout.com/nfl/broncos"], ["Detroit Lions", "https://www.scout.com/nfl/lions"], ["Green Bay Packers", "https://www.scout.com/nfl/packers"], ["Houston Texans", "https://www.scout.com/nfl/texans"], ["Indianapolis Colts", "https://www.scout.com/nfl/colts"], ["Jacksonville Jaguars", "https://www.scout.com/nfl/jaguars"], ["Kansas City Chiefs", "https://www.scout.com/nfl/chiefs"], ["Los Angeles Rams", "https://www.scout.com/nfl/rams"], ["Miami Dolphins", "https://www.scout.com/nfl/dolphins"], ["Minnesota Vikings", "https://www.scout.com/nfl/vikings"], ["New England Patriots", "https://www.scout.com/nfl/patriots"], ["New Orleans Saints", "https://www.scout.com/nfl/saints"], ["New York Giants", "https://www.scout.com/nfl/giants"], ["New York Jets", "https://www.scout.com/nfl/jets"], ["Oakland Raiders", "https://www.scout.com/nfl/raiders"], ["Philadelphia Eagles", "https://www.scout.com/nfl/eagles"], ["Pittsburgh Steelers", "https://www.scout.com/nfl/steelers"], ["Sand Diego Chargers", "https://www.scout.com/nfl/chargers"], ["San Francisco 49ers", "https://www.scout.com/nfl/49ers"], ["Seattle Seahawks", "https://www.scout.com/nfl/seahawks"], ["Tampa Bay Buccaneers", "https://www.scout.com/nfl/buccaneers"], ["Tennessee Titans", "https://www.scout.com/nfl/titans"], ["Washington Redskins", "https://www.scout.com/nfl/redskins"]]
   NCAA_CONFERENCES = ["SEC", "ACC", "BIG 10", "BIG 12", "AMERICAN" "PAC 12", "CONFERENCE USA", "MOUNTAIN WEST", "MAC", "SUN BELT", "INDEPENDENTS"]
   SEC_TEAMS = [["Alabama Crimson Tide", "https://www.scout.com/college/alabama"], ["Arkansas Razorbacks", "https://www.scout.com/college/arkansas"], ["Auburn Tigers", "https://www.scout.com/college/auburn"], ["Florida Gators", "https://www.scout.com/college/florida"], ["Georgia Bulldogs", "https://www.scout.com/college/georgia"], ["Kentucky Wildcats", "https://www.scout.com/college/kentucky"], ["LSU Tigers", "https://www.scout.com/college/lsu"], ["Mississippi Rebels", "https://www.scout.com/college/ole-miss"], ["Mississippi State Bulldogs", "https://www.scout.com/college/mississippi-state"], ["Missouri Tigers", "https://www.scout.com/college/missouri"], ["South Carolina Gamecocks", "https://www.scout.com/college/south-carolina"], ["Tennessee Volunteers", "https://www.scout.com/college/tennessee"], ["Texas A&M Aggies", "https://www.scout.com/college/texas-am"], ["Vanderbilt Commodores", "https://www.scout.com/college/vanderbilt"]]
-  NCAA_ACC_TEAMS = []
+  ACC_TEAMS = [["Boston College Eagles", "https://www.scout.com/college/boston-college"], ["Clemson Tigers", "https://www.scout.com/college/clemson"], ["Duke Blue Devils", "https://www.scout.com/college/duke"], ["Florida State Seminoles", "https://www.scout.com/college/florida-state"], ["Georgia Tech Yellow Jackets", "https://www.scout.com/college/georgia-tech"], ["Louisville Cardinals", "https://www.scout.com/college/louisville"], ["Miami(FL) Hurricanes", "https://www.scout.com/college/miami"], ["NC State Wolfpack", "https://www.scout.com/college/north-carolina-state"], ["North Carolina Tar Heels", "https://www.scout.com/college/north-carolina"], ["Pittsburgh Panthers", "https://www.scout.com/college/pittsburgh"], ["Syracuse Orangemen", "https://www.scout.com/college/syracuse"], ["Virgina Cavaliers", "https://www.scout.com/college/virginia"], ["Virginia Tech Hokies", "https://www.scout.com/college/virginia-tech"], ["Wake Forest Demon Deacons", "https://www.scout.com/college/wake-forest"]]
+  BIG_10_TEAMS = []
+  BIG_12_TEAMS = []
+  AAC_TEAMS = []
+  PAC_12_TEAMS = []
+  CUSA_TEAMS = []
+  MWC_TEAMS = []
+  MAC_TEAMS = []
+  SUN_BELT_TEAMS = []
+  INDEPENDENT_TEAMS = []
 
   def call
     puts "Welcome to Team News"
@@ -133,6 +142,26 @@ class TeamNews::CLI
         case choice.to_i
         when 1
           list_ncaa_teams(SEC_TEAMS)
+        when 2
+          list_ncaa_teams(ACC_TEAMS)
+        when 3
+          list_ncaa_teams(BIG_10_TEAMS)
+        when 4
+          list_ncaa_teams(BIG_12_TEAMS)
+        when 5
+          list_ncaa_teams(AAC_TEAMS)
+        when 6
+          list_ncaa_teams(PAC_12_TEAMS)
+        when 7
+          list_ncaa_teams(CUSA_TEAMS)
+        when 8
+          list_ncaa_teams(MWC_TEAMS)
+        when 9
+          list_ncaa_teams(MAC_TEAMS)
+        when 10
+          list_ncaa_teams(SUN_BELT_TEAMS)
+        when 11
+          list_ncaa_teams(INDEPENDENT_TEAMS)
         end
       end
     end
