@@ -62,8 +62,11 @@ class TeamNews::CLI
       elsif choice.to_i.between?(1,32)
         puts " "
         TeamNews::Story.reset
-        html = TeamNews::Story.story_scrape(NFL_TEAMS[choice.to_i-1][1])
-        list_nfl_team_stories
+        while TeamNews::Story.all.count < 20
+          TeamNews::Story.reset
+          TeamNews::Story.story_scrape(NFL_TEAMS[choice.to_i-1][1])
+        end
+          list_nfl_team_stories
       end
     end
   end
