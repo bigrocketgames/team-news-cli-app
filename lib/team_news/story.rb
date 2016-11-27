@@ -28,8 +28,10 @@ class TeamNews::Story
   end
 
   def self.story_list
+    count = 1
     self.all.each do |story|
-
+      puts "#{count}. #{story.headline} - #{story.subscription}"
+      count += 1
     end
   end
 

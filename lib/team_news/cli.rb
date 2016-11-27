@@ -6,12 +6,14 @@ class TeamNews::CLI
 
   def call
     puts "Welcome to Team News"
+    puts " "
     list_sports
   end
 
   def list_sports
     puts "Please enter the number of the sport you would like to see."
     puts "Enter 'exit' to end your session."
+    puts " "
     count = 1
 
     SPORTS.each do |s|
@@ -22,6 +24,7 @@ class TeamNews::CLI
     choice = gets.strip.downcase
 
     if choice == "1"
+      puts " "
       list_nfl_teams
     elsif choice == "exit"
       puts "Goodbye"
@@ -36,17 +39,20 @@ class TeamNews::CLI
       count += 1
     end
 
+    puts " "
     puts "Please enter the number of the team you would like to see headlines for."
     puts "Enter 0 to go back to the main menu or 'exit' to end your session."
 
     choice = gets.strip.downcase
 
     if choice == "0"
+      puts " "
       call
     elsif choice == "exit"
       puts "Goodbye"
     else
       # test that scraper is working by pushing the website from the NFL team array to TeamNews::Scraper.nfl_team_scrape()
+      puts " "
       html = TeamNews::Story.new.class.story_scrape(NFL_TEAMS[choice.to_i-1][1])
       list_nfl_team_stories
     end
@@ -54,8 +60,23 @@ class TeamNews::CLI
 
   def list_nfl_team_stories
     TeamNews::Story.new.class.story_list
+    puts " "
     puts "Please enter the number of the story you would like to read."
     puts "Enter 0 to return to the list of NFL teams or 'exit' to end your session."
+
+    choice = gets.strip.downcase
+
+    if choice == "0"
+      puts " "
+      list_nfl_teams
+    elsif choice == "exit"
+      puts "Goodbye"
+    elsif choice.to_i.between?(1,20)
+
+    else
+      puts "Please enter a valid response(0-20, 'exit')."
+    end
+
   end
 
 end
