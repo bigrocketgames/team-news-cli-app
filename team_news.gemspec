@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["NATHAN ROBBERT"]
   spec.email         = ["admin@bigrocketgames.com"]
 
-  spec.summary       = "TD: Write a short summary, because Rubygems requires one."
-  spec.description   = "TD: Write a longer description or delete this line."
-  spec.homepage      = "TD: Put your gem's website or public repo URL here."
+  spec.summary       = "A tool to scrape the page of your selected team in the NFL or NCAA football."
+  spec.description   = "This gem is for scraping the selected team page and returning the 20 most recent stories published to the site.  A story can then be read if it is a free article or gives the brief intro to a subscriber only article, if it is available."
+  spec.homepage      = "https://github.com/bigrocketgames/team-news-cli-app"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

@@ -1,8 +1,8 @@
 # TeamNews
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/team_news`. To experiment with that code, run `bin/console` for an interactive prompt.
+## Description
 
-TODO: Delete this and the text above, and describe your gem
+This gem is for scraping the selected team page and returning the 20 most recent stories published to the site.  A story can then be read if it is a free article or gives the brief intro to a subscriber only article, if it is available.
 
 ## Installation
 
@@ -19,10 +19,6 @@ And then execute:
 Or install it yourself as:
 
     $ gem install team_news
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Development
 
