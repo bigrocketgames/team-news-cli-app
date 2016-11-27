@@ -36,7 +36,19 @@ class TeamNews::Story
   end
 
   def self.read_story(story_number)
-    puts self.all[story_number].headline
+    story = self.all[story_number]
+    if story.subscription == "Subscription Required"
+      if story.summary == "No summary available."
+        puts "This is a story requiring a subscription to read, and unfortunately there is no article into to show."
+      else
+        puts "This is a story requiring a subscription, but here is the intro to the article."
+        puts " "
+        puts story.summary
+      end
+    else
+      puts story.headline.upcase
+      TeamNews::Scraper.scrape_article(story.link)
+    end
   end
 
 end

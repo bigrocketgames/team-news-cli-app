@@ -72,6 +72,7 @@ class TeamNews::CLI
     elsif choice == "exit"
       puts "Goodbye"
     elsif choice.to_i.between?(1,20)
+      puts " "
       TeamNews::Story.read_story(choice.to_i-1)
     else
       puts "Please enter a valid response(0-20, 'exit')."

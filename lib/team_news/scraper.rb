@@ -55,5 +55,12 @@ class TeamNews::Scraper
     end
   end
 
+  def self.scrape_article(article_url)
+    doc = Nokogiri::HTML(open("#{article_url}"))
+    doc.css("div.story-content div[itemprop='articleBody'] p").each do |p|
+        puts p.text.strip
+        puts " "
+    end
+  end
 
 end
